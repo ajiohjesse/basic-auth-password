@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export const config = {
   matcher: ['/', '/index'],
 }
 
-export function middleware(req) {
+export function middleware(req: NextRequest) {
   const basicAuth = req.headers.get('authorization')
   const url = req.nextUrl
 
@@ -16,7 +16,6 @@ export function middleware(req) {
       return NextResponse.next()
     }
   }
-
   url.pathname = '/api/auth'
 
   return NextResponse.rewrite(url)
