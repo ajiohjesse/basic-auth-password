@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server'
 
 export const config = {
   matcher: ['/', '/index'],
@@ -15,7 +16,7 @@ export function middleware(req) {
       return NextResponse.next()
     }
   }
-  
+
   url.pathname = '/api/auth'
 
   return NextResponse.rewrite(url)
